@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="criminal-record.png" type="image/x-icon">
+    <title>Record Data</title>
+</head>
+
+<body>
+    <main>
+        <h4 style="text-align: center; font-size: 35px;">Criminal Management System</h4>
+        <div class="container">
+            <form id="criminalData">
+                <h2>Add Criminal</h2>
+                <label>Name:</label>
+                <input type="text" id="name" name="name"><br>
+                <label>Age:</label>
+                <input type="number" id="age" name="age"><br>
+                <label >Gender:</label>
+                <select id="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select><br>
+                <label>Crime:</label>
+                <input type="text" id="crime"><br>
+                <button type="submit">Add</button>
+            </form>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Criminal Management System. All rights reserved.</p>
+    </footer>
+    <script src="https://www.gstatic.com/firebasejs/3.7.4/firebase.js">
+    </script>
+
+    <script>
+        var firebaseConfig = {
+            apiKey: "AIzaSyCk-sxaSmDhzlAM26EAmgu3eyLPATA9yzA",
+            authDomain: "crime-management-system-a1dad.firebaseapp.com",
+            databaseURL: "https://crime-management-system-a1dad-default-rtdb.firebaseio.com",
+            projectId: "crime-management-system-a1dad",
+            storageBucket: "crime-management-system-a1dad.appspot.com",
+            messagingSenderId: "232441379459",
+            appId: "1:232441379459:web:1bb97ac1a34791337439b6",
+            measurementId: "G-ES7NY6TV01"
+        };
+
+        firebase.initializeApp(firebaseConfig);
+
+        var messagesRef = firebase.database()
+            .ref('Collected Data');
+
+        document.getElementById('criminalData')
+            .addEventListener('submit', submitForm);
+
+        function submitForm(e) {
+            e.preventDefault();
+
+            // Get values
+            var name = getInputVal('name');
+            var age = getInputVal('age');
+            var gender = getInputVal('gender');
+            var crime = getInputVal('crime');
+
+            saveMessage(name, age, gender, crime);
+            document.getElementById('criminalData').reset();
+        }
+
+        // Function to get form values
+        function getInputVal(id) {
+            return document.getElementById(id).value;
+        }
+
+        // Save message to firebase
+        function saveMessage(name, age, gender, crime) {
+            var newMessageRef = messagesRef.push();
+            newMessageRef.set({
+                name: name,
+                age: age,
+                gender: gender,
+                crime: crime
+            });
+        }
+    </script>
+
+</body>
+
+</html>
