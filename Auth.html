@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<head>
+    <link rel="stylesheet" href="loader.css">
+    <link rel="stylesheet" href="forms.css">
+    <link rel="shortcut icon" href="authority.png" type="image/x-icon">
+    
+    <title>Authentication</title>
+</head>
+<!--<div class = "loader"></div> -->
+
+<body>
+    <div class="login-card">
+        <div class="card-header">
+          <div class="log">Login</div>
+        </div>
+        <form>
+          <div class="form-group">
+            <label for="username">Username:</label>
+            <input required="" name="username" id="username" type="text">
+          </div>
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input required="" name="password" id="password"  type="password">
+          </div>
+          <div class="form-group">
+            <input value="Login" type="submit"class="submit-btn" onclick="auth()"/>
+          </div>
+        </form>
+      </div>
+      <script>
+        function auth(){
+            var username = document.getElementById("username").value;
+            var password = document.getElementById("password").value;
+            if(username == "crisp@gmail.com" && password == "admin123"){
+                window.location.assign("index.html");
+                alert("Login Successful.");
+            }
+            else{
+                alert("Invalid Information");
+                return;
+            }
+        }
+      </script>
+</body>
+</html>

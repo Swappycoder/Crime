@@ -6,30 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="button.css">
+    <link rel="stylesheet" href="loader.css">
     <link rel="shortcut icon" href="criminal-record.png" type="image/x-icon">
     <title>Record Data</title>
 </head>
-
+<!-- <div class="loader"></div> -->
 <body>
     <main>
+
         <h4 style="text-align: center; font-size: 35px;">Criminal Management System</h4>
         <div class="container">
             <form id="criminalData">
                 <h2>Add Criminal</h2>
                 <label>Name:</label>
-                <input type="text" id="name" name="name"><br>
+                <input placeholder="Enter Full name" class="input" type="text" id="name" name="FullName"><br>
                 <label>Age:</label>
-                <input type="number" id="age" name="age"><br>
+                <input placeholder="Enter Age" type="number" name="age" id="age"><br>
                 <label >Gender:</label>
                 <select id="gender">
                     <option value="male">Male</option>
                     <option value="female">Female</option>
-                    <option value="other">Other</option>
+                    <option value="other">GAY</option>
                 </select><br>
                 <label>Crime:</label>
-                <input type="text" id="crime"><br>
+                <input placeholder="Enter Crime" type="text" id="crime"><br>
+                <h4 style="text-align: center;"></style>
                 <button type="submit">Add</button>
-            </form>
+                </form>
+        
         </div>
     </main>
     <footer>
@@ -88,6 +93,13 @@
         }
     </script>
 
+    <script>
+        var loader = document.getElementById("loading");
+
+        window.addlistner("load", function(){
+            loader.style.display = "none";
+        })
+    </script>
 </body>
 
 </html>
